@@ -1,0 +1,190 @@
+# RoomVibe Setup Guide
+
+## Clone or Copy the Project
+
+All files are in `/home/claude/`. You can:
+
+### Option 1: Copy to your computer
+```bash
+# Copy all files to your project directory
+cp -r /home/claude/* ./roomvibe/
+cd roomvibe
+```
+
+### Option 2: Initialize with Git
+```bash
+mkdir roomvibe && cd roomvibe
+git init
+# Paste all files from /home/claude/
+```
+
+---
+
+## Installation
+
+### 1. Install Node.js
+If you don't have it, download from [nodejs.org](https://nodejs.org/)
+
+Check installation:
+```bash
+node --version  # Should be v16+
+npm --version   # Should be v7+
+```
+
+### 2. Install Dependencies
+```bash
+npm install
+```
+
+This installs:
+- React 18
+- Vite (build tool)
+- Tailwind CSS
+- All dependencies
+
+---
+
+## Run Locally
+
+```bash
+npm run dev
+```
+
+Output:
+```
+  VITE v5.0.7  ready in 234 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  press h to show help
+```
+
+Open **http://localhost:3000** in your browser → RoomVibe is live! 🎉
+
+---
+
+## Test the App
+
+1. **Upload an image** — Click "Upload your room photo" or drag a JPG/PNG
+2. **Add furniture** — Click "Sofa", "Chair", etc. and drag to your room
+3. **Try colors** — Click a color theme (Minimalist, Warm, Moody, etc.)
+4. **Download** — Hit "Download design" to get a PNG
+
+---
+
+## Build for Production
+
+```bash
+npm run build
+```
+
+Creates optimized version in `dist/` folder (~50KB gzipped)
+
+---
+
+## Deploy to Vercel (One Command)
+
+### First Time Setup
+```bash
+npm install -g vercel
+vercel login  # Sign in with GitHub/email
+```
+
+### Deploy
+```bash
+vercel
+```
+
+That's it! Your app is live at `roomvibe.vercel.app` ✨
+
+Every push to Git will auto-deploy. To customize the domain:
+```bash
+vercel --prod
+# Follow prompts to add custom domain
+```
+
+---
+
+## Project Files Explained
+
+| File | Purpose |
+|------|---------|
+| `src/RoomVibe.jsx` | Main React component with all features |
+| `src/App.jsx` | App wrapper |
+| `src/main.jsx` | React entry point |
+| `src/index.css` | Global styles (Tailwind) |
+| `index.html` | HTML template |
+| `package.json` | Dependencies & scripts |
+| `vite.config.js` | Build configuration |
+| `tailwind.config.js` | Tailwind settings |
+| `vercel.json` | Deployment config |
+
+---
+
+## Customize
+
+### Change App Name
+Edit `index.html` and `src/RoomVibe.jsx`:
+```jsx
+<h1 className="text-3xl font-bold text-slate-900">
+  🏠 RoomVibe  // ← Change here
+</h1>
+```
+
+### Add More Furniture
+Edit `src/RoomVibe.jsx` in the `furnitureTypes` array:
+```jsx
+{ name: 'Desk', icon: '🖥️', color: '#8B6F47' },
+{ name: 'Mirror', icon: '🪞', color: '#C0C0C0' },
+```
+
+### Add More Colors
+Edit `colorThemes` array in `src/RoomVibe.jsx`:
+```jsx
+{ 
+  name: 'Ocean', 
+  overlay: 'rgba(100,150,200,0.12)', 
+  wallColor: '#E6F2FF', 
+  accentColor: '#0066CC' 
+}
+```
+
+---
+
+## Troubleshooting
+
+### "Port 3000 already in use"
+```bash
+npm run dev -- --port 3001
+```
+
+### "Module not found" error
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+
+### Vercel deployment fails
+- Make sure `package.json` is in root
+- Check `vercel.json` settings
+- Run `npm run build` locally first to test
+
+---
+
+## Next Steps
+
+1. ✅ Get it running locally
+2. ✅ Try uploading a photo
+3. ✅ Deploy to Vercel
+4. ✅ Share the link with friends/users
+5. Later: Add AI furniture detection, 360° view, shopping links
+
+---
+
+## Need Help?
+
+- Check `README.md` for full docs
+- Run `npm run dev` with `--debug` flag
+- Check browser console (F12) for errors
+- Reach out: hello@sapdlabs.com
+
+Happy designing! 🎨
